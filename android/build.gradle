@@ -16,6 +16,15 @@ buildscript {
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
     }
+     configurations.all {
+        resolutionStrategy {
+            // Cache dynamic versions (e.g., 1.0-SNAPSHOT) for 10 minutes
+            cacheDynamicVersionsFor 10, 'minutes'
+
+            // Cache changing modules (e.g., dependencies with changing content) for 24 hours
+            cacheChangingModulesFor 24, 'hours'
+        }
+     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
